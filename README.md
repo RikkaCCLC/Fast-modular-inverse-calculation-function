@@ -1,5 +1,12 @@
-## Format-based inversion for SM2 && NIST
-## 代码编写说明
+### 本项目是关于快速模逆计算的密码学项目。其中给出了两种不同的算法，分别是Daniel J. Bernstein 和 Bo-Yin Yang 在2019年提出的 constant-time gcd算法与基于费马小定理的加法链模逆算法。
+### 关于Daniel J. Bernstein 和 Bo-Yin Yang 在2019年提出的constant-time gcd算法请参照官网 ：
+### 论文：https://eprint.iacr.org/2019/266 
+### 项目介绍网站以及./test函数下载地址：https://gcd.cr.yp.to/software.html
+### 另一种算法是ZHI HU等人在2019年提出的Lightweight Implementations of NIST P-256 and SM2 ECC on 8-bit Resource-Constraint Embedded Device，本项目对论文中算法进行了具体的代码实现。
+---
+### 本文件不再对constant-time gcd算法进行具体展开介绍，具体代码以及测试函数已经放入master分支中的后缀名为_Constant_GCD的文件夹中。这里主要介绍加法链模逆算法的代码编写说明。
+### Format-based inversion for SM2 && NIST
+### 基于费马小定理的快速模逆计算代码编写说明
 
 代码按照论文: ***Lightweight Implementations of NIST P-256 and SM2 ECC on 8-bit Resource-Constraint Embedded Device*** 给出的算法步骤进行编写.
 
@@ -37,7 +44,7 @@
 
 `void format_inversion() `有三个传入参数:` mpz_t t,const mpz_t z, const mpz_t p`
 
-p为模数, z为系统随机输入的大小在1~p-1之间的数, t 用于存放计算结果
+**p为模数, z为系统随机输入的大小在1~p-1之间的数, t 用于存放计算结果**
 
 ```c
 #define BITS 256
@@ -118,7 +125,7 @@ void fermat_inversion(mpz_t t, const mpz_t z, const mpz_t p) {
 
 高次项使用循环来计算
 
-其中z3, z15, t ~ t5分别与论文中的同名参数对应.
+**其中z3, z15, t ~ t5分别与论文中的同名参数对应.**
 
 `main` 函数
 
