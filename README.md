@@ -1,4 +1,5 @@
 ## Format-based inversion for SM2 && NIST
+## 代码编写说明
 
 代码按照论文: ***Lightweight Implementations of NIST P-256 and SM2 ECC on 8-bit Resource-Constraint Embedded Device*** 给出的算法步骤进行编写.
 
