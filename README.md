@@ -1,36 +1,21 @@
-### 本项目是关于快速模逆计算的密码学项目。其中给出了两种不同的算法，分别是Daniel J. Bernstein 和 Bo-Yin Yang 在2019年提出的 constant-time gcd算法与基于费马小定理的加法链模逆算法。
-### 关于Daniel J. Bernstein 和 Bo-Yin Yang 在2019年提出的constant-time gcd算法请参照官网 ：
-### 论文：https://eprint.iacr.org/2019/266 
-### 项目介绍网站以及./test函数下载地址：https://gcd.cr.yp.to/software.html
-### 另一种算法是ZHI HU等人在2019年提出的Lightweight Implementations of NIST P-256 and SM2 ECC on 8-bit Resource-Constraint Embedded Device，本项目对论文中算法进行了具体的代码实现。
+##### 本项目是关于快速模逆计算的密码学项目。其中给出了两种不同的算法，分别是Daniel J. Bernstein 和 Bo-Yin Yang 在2019年提出的 constant-time gcd算法与基于费马小定理的加法链模逆算法。
+##### 关于Daniel J. Bernstein 和 Bo-Yin Yang 在2019年提出的constant-time gcd算法请参照官网 ：
+##### 论文：https://eprint.iacr.org/2019/266 
+##### 项目介绍网站以及./test函数下载地址：https://gcd.cr.yp.to/software.html
+##### 另一种算法是ZHI HU等人在2019年提出的Lightweight Implementations of NIST P-256 and SM2 ECC on 8-bit Resource-Constraint Embedded Device，本项目对论文中算法进行了具体的代码实现。
 ---
-### 本项目参照论文中给出的NIST P-256模逆测试函数。编写代码实现了constant-time gcd算法在国产密码曲线SM2上的模逆计算，并对论文中给出的算法测试函数添加了时钟周期测试的功能。模逆计算轮数为5000次，单次时钟周期可自行计算。
-### 本文件不再对constant-time gcd算法进行具体展开介绍，具体代码以及测试函数已经放入master分支中的后缀名为_Constant_GCD的文件夹中。这里主要介绍加法链模逆算法的代码编写说明。
+##### 本项目参照论文中给出的NIST P-256模逆测试函数。编写代码实现了constant-time gcd算法在国产密码曲线SM2上的模逆计算，并对论文中给出的算法测试函数添加了时钟周期测试的功能。模逆计算轮数为5000次，单次时钟周期可自行计算。
+##### 本文件不再对constant-time gcd算法进行具体展开介绍，具体代码以及测试函数已经放入master分支中的后缀名为_Constant_GCD的文件夹中。这里主要介绍加法链模逆算法的代码编写说明。
 
 
-### Format-based inversion for SM2 && NIST
-### 基于费马小定理的快速模逆计算代码编写说明
+##### Format-based inversion for SM2 && NIST
+##### 基于费马小定理的快速模逆计算代码编写说明
 
 代码按照论文: ***Lightweight Implementations of NIST P-256 and SM2 ECC on 8-bit Resource-Constraint Embedded Device*** 给出的算法步骤进行编写.
 
-### 1. 论文中算法描述:
-
-### SM2
-
-<img src="https://github.com/Mozartto/Extended-Euclidean-algorithm-and-fast-modular-inversion/assets/58902267/a86b8e6e-ce8c-44ed-a064-dfb37d8b1797" alt="image" style="zoom:50%;" />
 
 
-
-
-### NIST P-256
-<img src="https://github.com/Mozartto/Extended-Euclidean-algorithm-and-fast-modular-inversion/assets/58902267/f76c1ff5-7369-4e44-ba01-4b16bad53c1a" alt="image" style="zoom: 50%;" />
-
-
-上述算法使用了加法链的思想.
-
-
-
-### 2.代码编写
+#### 代码编写
 
 编写测试了四个代码文件, 分别是
 
@@ -248,5 +233,5 @@ size_t 返回值 : 实际从文件中读取的 基本单元 个数 ; 读取的�
 
 代码测试5000次模逆计算所需的时间，我是在自己的archLinux上进行的测试，CPU主频1.6GHZ，使用控制台输出的时间乘以1.6×10^9 再除以5000即可得到单次模逆所需的时钟周期数。在不同机器上进行函数测试只需更改最后计算的cpu主频参数即可。
 
-### 本项目代码在两种算法的代码目录中已经生成了对应的.out文件，可直接跳过代码编译步骤进行测试。当然注意修改完代码之后不要忘记重新编译生成可重定向文件再执行。
+#### 本项目代码在两种算法的代码目录中已经生成了对应的.out文件，可直接跳过代码编译步骤进行测试。当然注意修改完代码之后不要忘记重新编译生成可重定向文件再执行。
 
